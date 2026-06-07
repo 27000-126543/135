@@ -723,8 +723,10 @@ const Dashboard = () => {
                 </Space>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
-              bodyStyle={{ padding: '16px' }}
+              styles={{
+                header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' },
+                body: { padding: '16px' }
+              }}
             >
               <Row gutter={[12, 12]}>
                 {units.map(unit => {
@@ -837,7 +839,7 @@ const Dashboard = () => {
                 </Space>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+              styles={{ header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' } }}
               size="small"
             >
               <ReactECharts 
@@ -857,7 +859,7 @@ const Dashboard = () => {
                 </Space>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+              styles={{ header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' } }}
               size="small"
             >
               <ReactECharts 
@@ -877,7 +879,7 @@ const Dashboard = () => {
                 </Space>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+              styles={{ header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' } }}
               size="small"
             >
               <ReactECharts 
@@ -900,7 +902,7 @@ const Dashboard = () => {
                 </Space>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+              styles={{ header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' } }}
             >
               <Row gutter={[12, 12]}>
                 {systemStatuses.map(system => (
@@ -966,7 +968,7 @@ const Dashboard = () => {
                 </Button>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+              styles={{ header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' } }}
             >
               <Table
                 size="small"
@@ -998,7 +1000,7 @@ const Dashboard = () => {
                 </Space>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+              styles={{ header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' } }}
             >
               <Row gutter={[12, 12]}>
                 <Col span={12}>
@@ -1079,7 +1081,7 @@ const Dashboard = () => {
                 </Space>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+              styles={{ header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' } }}
             >
               <ReactECharts 
                 option={radiationChartOption} 
@@ -1134,7 +1136,7 @@ const Dashboard = () => {
                 </Space>
               }
               style={darkCardStyle}
-              headStyle={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+              styles={{ header: { color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)' } }}
             >
               <ReactECharts 
                 option={generationPlanOption} 
