@@ -17,7 +17,8 @@ import {
   message,
   Badge,
   Alert,
-  Popconfirm
+  Popconfirm,
+  Spin
 } from 'antd';
 import {
   WarningOutlined,
@@ -93,6 +94,28 @@ interface HeatmapDataPoint {
   value: [number, number, number];
   itemStyle: { color: string };
 }
+
+const ChartLoading = ({ loading, children }: { loading: boolean; children: React.ReactNode }) => (
+  <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    {children}
+    {loading && (
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'rgba(255, 255, 255, 0.8)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 10
+      }}>
+        <Spin size="large" tip="数据加载中..." />
+      </div>
+    )}
+  </div>
+);
 
 const RadiationMonitoring = () => {
   const {
@@ -668,11 +691,13 @@ const RadiationMonitoring = () => {
               </Space>
             }
           >
-            <ReactECharts 
-              option={heatmapOption} 
-              style={{ height: '380px' }} 
-              notMerge 
-            />
+            <ChartLoading loading={loading}>
+              <ReactECharts 
+                option={heatmapOption} 
+                style={{ height: '380px' }} 
+                notMerge 
+              />
+            </ChartLoading>
           </Card>
         </Col>
 
@@ -896,11 +921,13 @@ const RadiationMonitoring = () => {
               </Text>
             }
           >
-            <ReactECharts 
-              option={trendOption} 
-              style={{ height: '400px' }} 
-              notMerge 
-            />
+            <ChartLoading loading={loading}>
+              <ReactECharts 
+                option={trendOption} 
+                style={{ height: '400px' }} 
+                notMerge 
+              />
+            </ChartLoading>
           </Card>
         </Col>
       </Row>

@@ -61,7 +61,13 @@ export const radiationApi = {
 };
 
 export const employeeApi = {
-  getAll: () => api.get<Employee[]>('/employees')
+  getAll: () => api.get<Employee[]>('/employees').then(res => ({
+    ...res,
+    data: res.data.map(emp => ({
+      ...emp,
+      skills: Array.isArray(emp.skills) ? emp.skills : JSON.parse(emp.skills || '[]')
+    }))
+  }))
 };
 
 export const shiftApi = {
@@ -80,7 +86,7 @@ export const statisticsApi = {
   get: (unitId: string, period: 'daily' | 'weekly' | 'monthly', startDate: string, endDate: string) =>
     api.get<Statistics[]>('/statistics', { params: { unitId, period, startDate, endDate } }),
   exportPDF: (unitId: string, period: 'daily' | 'weekly' | 'monthly', startDate: string, endDate: string) =>
-    api.get('/statistics/export-pdf', { params: { unitId, period, startDate, endDate }, responseType: 'blob' })
+    api.get('/statistics/export-pdf', { params: { unitId, period, startDate, endDate }, responseType: 'arraybuffer' })
 };
 
 export const approvalRequestApi = {
